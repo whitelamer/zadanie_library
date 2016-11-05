@@ -1,4 +1,4 @@
-package whitelamer.library.netcracker.school.config;
+package netcracker.school.whitelamer.library.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "whitelamer.library.netcracker.school.service" })
+@ComponentScan({ "netcracker.school.whitelamer.library.service" })
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override

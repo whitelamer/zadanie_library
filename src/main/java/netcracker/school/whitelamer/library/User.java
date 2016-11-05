@@ -1,4 +1,4 @@
-package whitelamer.library.netcracker.school;
+package netcracker.school.whitelamer.library;
 
 import org.springframework.stereotype.Component;
 

@@ -1,11 +1,11 @@
-package whitelamer.library.netcracker.school.service;
+package netcracker.school.whitelamer.library.service;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import whitelamer.library.netcracker.school.User;
+import netcracker.school.whitelamer.library.User;
 
 @Controller
 public class LibraryController {

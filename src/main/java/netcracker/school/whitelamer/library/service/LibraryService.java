@@ -1,4 +1,4 @@
-package whitelamer.library.netcracker.school.service;
+package netcracker.school.whitelamer.library.service;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

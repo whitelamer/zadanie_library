@@ -1,4 +1,4 @@
-package whitelamer.library.netcracker.school.config;
+package netcracker.school.whitelamer.library.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

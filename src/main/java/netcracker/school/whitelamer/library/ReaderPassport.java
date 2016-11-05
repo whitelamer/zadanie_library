@@ -1,4 +1,4 @@
-package whitelamer.library.netcracker.school;
+package netcracker.school.whitelamer.library;
 
 public class ReaderPassport implements Passport {
     private Integer number;

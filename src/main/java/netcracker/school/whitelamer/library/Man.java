@@ -1,4 +1,4 @@
-package whitelamer.library.netcracker.school;
+package netcracker.school.whitelamer.library;
 import java.util.Date;
 
 public class Man {

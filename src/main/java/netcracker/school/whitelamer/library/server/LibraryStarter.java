@@ -1,4 +1,4 @@
-package whitelamer.library.netcracker.school.server;
+package netcracker.school.whitelamer.library.server;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 public class LibraryStarter {
     private static final int DEFAULT_PORT = 9090;
     private static final String CONTEXT_PATH = "/";
-    private static final String CONFIG_LOCATION = "whitelamer.library.netcracker.school.config";
+    private static final String CONFIG_LOCATION = "netcracker.school.whitelamer.library.config";
     private static final String MAPPING_URL = "/*";
 
     public static void main(String[] args) throws Exception {
