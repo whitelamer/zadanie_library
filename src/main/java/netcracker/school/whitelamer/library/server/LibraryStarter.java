@@ -1,5 +1,6 @@
 package netcracker.school.whitelamer.library.server;
 
+import netcracker.school.whitelamer.logmanager.LogManager;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -7,9 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-
 import org.springframework.web.servlet.DispatcherServlet;
-import whitelamer.logmanager.netcracker.school.LogManager;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -58,7 +57,10 @@ public class LibraryStarter {
 
         ServletContextHandler contextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         contextHandler.setErrorHandler(null);
-        contextHandler.setResourceBase(new ClassPathResource("/html").getURI().toString());
+
+        System.out.println(new ClassPathResource("/").getURI().toString());
+
+        contextHandler.setResourceBase(new ClassPathResource("/").getURI().toString());
         contextHandler.setContextPath(CONTEXT_PATH);
         WebApplicationContext webAppContext = getContext();
         DispatcherServlet dispatcherServlet = new DispatcherServlet(webAppContext);
