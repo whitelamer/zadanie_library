@@ -1,0 +1,18 @@
+<LogManager>
+    <serverlogger type="INFO">
+        <filter regexp=".*9090*." accepting="true"/>
+        <handler type="file" filename="server.log"/>
+        <logger type="ALL">
+            <handler type="file" filename="allservers.log"/>
+        </logger>
+        <logger type="ERROR">
+            <handler type="file" filename="error.log"/>
+        </logger>
+    </serverlogger>
+    <baselogger type="INFO">
+        <handler type="base" user="user" password="1234">
+            <basename>jdbc:postgresql://localhost:5432/testdb</basename>
+            <insert>INSERT INTO LOGS (MESSAGE) VALUES ('%s');</insert>
+        </handler>
+    </baselogger>
+</LogManager>
