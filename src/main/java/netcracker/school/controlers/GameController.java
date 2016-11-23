@@ -18,7 +18,8 @@ public class GameController {
     GameThread gameThread=GameThread.getInstance();
     @RequestMapping("/game")
     public String hello(Model model) {
-        if(!gameThread.isAlive())gameThread.startGame();
+        //if(!gameThread.isAlive())
+        gameThread.startGame();
         player=gameThread.getPlayer();
         model.addAttribute("hello", "Hello Player");
         if (player.isAlive()) {
