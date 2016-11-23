@@ -10,8 +10,8 @@
         </logger>
     </serverlogger>
     <baselogger type="INFO">
-        <handler type="base" user="user" password="1234">
-            <basename>jdbc:postgresql://localhost:5432/testdb</basename>
+        <handler type="base" user="postgres" password="postgres">
+            <basename>jdbc:postgresql://localhost:5432/library</basename>
             <insert>INSERT INTO LOGS (MESSAGE) VALUES ('%s');</insert>
         </handler>
     </baselogger>

@@ -8,8 +8,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.io.Resource;
 
-import java.io.IOException;
 
 @SpringBootApplication
 public class LibraryApplication extends SpringBootServletInitializer {
@@ -24,10 +25,13 @@ public class LibraryApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) throws Exception {
 
-		logger.loadFromFile("LogManager.xml");//настраиваем менеджер
-		SpringApplication.run(LibraryApplication.class, args);
+
+		ConfigurableApplicationContext appContext = SpringApplication.run(LibraryApplication.class, args);
+
+		Resource resource = appContext.getResource("classpath:LogManager.xml");
+		logger.loadFromFile(resource.getURI().toString());//настраиваем менеджер
 		try {
-			logger.writeLog(LogType.WARN, "filelogger", "Start write to file");//пишем сообщение в логера с именем filelogger
+			logger.writeLog(LogType.WARN, "serverlogger", "Start write to file");//пишем сообщение в логера с именем filelogger
 		}catch (LoggerNotFoundException e){
 			e.printStackTrace();
 		}
