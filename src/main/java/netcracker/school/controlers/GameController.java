@@ -11,14 +11,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
+@RestController
 public class GameController {
     Player player;
     GameThread gameThread=GameThread.getInstance();
     @RequestMapping("/game")
     public String hello(Model model) {
         //if(!gameThread.isAlive())
+        gameThread.setSize(20);
         gameThread.startGame();
         player=gameThread.getPlayer();
         model.addAttribute("hello", "Hello Player");
@@ -33,7 +36,7 @@ public class GameController {
         }
     }
 
-    @RequestMapping(value = "/gameland", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
+    @RequestMapping(value = "/gameland", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET,headers="Accept=application/json")
     public String gameland(Model model) {
         if(!gameThread.isAlive())gameThread.startGame();
         DrawableEntity[][] map=gameThread.getSettleMap();
@@ -53,7 +56,7 @@ public class GameController {
         return "jsonTemplate";
     }
 
-    @RequestMapping(value = "/gameplayer/{action}", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
+    @RequestMapping(value = "/gameplayer/{action}", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET,headers="Accept=application/json")
     public String gameplayer(@PathVariable("action") String action, Model model) {
         gameThread.getPlayer().setAction(MoveAction.valueOf(action));
         model.addAttribute("land", action);

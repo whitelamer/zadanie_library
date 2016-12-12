@@ -24,4 +24,5 @@ public class RESTConfiguration
     public ViewResolver viewResolver() {
         return new BeanNameViewResolver();
     }
+
 }

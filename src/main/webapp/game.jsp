@@ -17,7 +17,7 @@ ${hello}
     <tr><td class="left" ng-click="setAction('left')">◀</td><td> </td><td class="right" ng-click="setAction('right')">▶</td></tr>
     <tr><td> </td><td class="down" ng-click="setAction('down')">▼</td><td> </td></tr>
 </table>
-<table class="perspective">
+<table class="land perspective">
     <tr ng-repeat="land_row in land.land track by $index">
         <td ng-repeat="land_td in land_row track by $index" class="cube">
             <div class="{{land_td.replace('characters.','')}}"></div>
