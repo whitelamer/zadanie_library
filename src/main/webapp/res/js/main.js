@@ -1,15 +1,19 @@
-var gameApp = angular.module('gameApp', ['ngRoute']);
+var libraryApp = angular.module('libraryApp', ['ngRoute']);
 
-gameApp.config(['$routeProvider', '$httpProvider', '$locationProvider', function ($routeProvider, $httpProvider, $locationProvider) {
+libraryApp.config(['$routeProvider', '$httpProvider', '$locationProvider', function ($routeProvider, $httpProvider, $locationProvider) {
 
     $locationProvider.html5Mode({enabled: true,requireBase: false});
 
     $routeProvider.
-    when('/game', {
-            templateUrl: 'game.html',
-            controller: 'MainCtrl'
-            }).
-    otherwise({redirectTo: '/'});
+    when('/index', {
+        templateURL: "/res/templ/index.html",
+        controller: 'MainCtrl'
+    }).
+    when('#!users', {
+        templateURL: "/res/templ/users.html",
+        controller: 'UsersCtrl'
+    }).
+    otherwise({redirectTo: '/index'});
 
     $httpProvider.defaults.useXDomain = true;
     $httpProvider.defaults.withCredentials = true;

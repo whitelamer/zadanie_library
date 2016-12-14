@@ -21,7 +21,6 @@ public class LibraryConfiguration extends WebMvcConfigurerAdapter {
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/");
         viewResolver.setSuffix(".jsp");
-
         return viewResolver;
     }
 
@@ -31,6 +30,6 @@ public class LibraryConfiguration extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/res/**").addResourceLocations("/");
+        registry.addResourceHandler("/res/**").addResourceLocations("/res/");
     }
 }

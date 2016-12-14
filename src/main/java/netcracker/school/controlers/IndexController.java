@@ -1,5 +1,7 @@
 package netcracker.school.controlers;
 
+import netcracker.school.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,10 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class IndexController {
+
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = { "/", "/index" })
     public String hello(Model model) {
-        System.out.println("hello:"+getPrincipal());
-        model.addAttribute("user", getPrincipal());
+        model.addAttribute("user", userService.getCurrentUserName());
         return "index";
     }
 
@@ -40,19 +45,8 @@ public class IndexController {
 
     @RequestMapping(value = "/error403", method = RequestMethod.GET)
     public String accessDeniedPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
+        model.addAttribute("user", userService.getCurrentUserName());
         return "error403";
     }
 
-    private String getPrincipal(){
-        String userName = null;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        if (principal instanceof UserDetails) {
-            userName = ((UserDetails)principal).getUsername();
-        } else {
-            userName = principal.toString();
-        }
-        return userName;
-    }
 }

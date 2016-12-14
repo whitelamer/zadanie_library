@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -7,12 +8,14 @@
 <body>
 Приветствую вас в нашей библиотеке
 <form method="POST" action="login">
-    <c:if test="${param.error != null}">
-        <div class="alert alert-danger">
-            <p>Invalid username and password.</p>
+    <c:if test="${not empty param.error}">
+        <div class="error">
+            Your login attempt was not successful, try again.<br />
+            Reason: ${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}
         </div>
     </c:if>
-    <c:if test="${param.logout != null}">
+
+    <c:if test="${not empty param.logout}">
         <div class="alert alert-success">
             <p>You have been logged out successfully.</p>
         </div>

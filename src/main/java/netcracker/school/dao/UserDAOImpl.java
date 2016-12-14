@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.List;
 
@@ -26,17 +27,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     public void addUser(User user) {
-//        try {
-//            dataSource.getConnection();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
         sessionFactory.getCurrentSession().save(user);
     }
 
     @SuppressWarnings("unchecked")
     public List<User> listUser() {
-        return sessionFactory.getCurrentSession().createQuery("from users")
+        return sessionFactory.getCurrentSession().createQuery("from User")
                 .list();
     }
 
@@ -48,10 +44,11 @@ public class UserDAOImpl implements UserDAO {
 //        }
     }
 
-    @Override
     public User getUserByEmail(String email) {
+        if(email==null)return null;
         Query q = sessionFactory.getCurrentSession().getNamedQuery( User.NamedQuery.USER_FIND_BY_EMAIL );
         q.setString("email", email);
+        if(q.list().size()==0)return null;
         User user = (User) q.list().get(0);
         if (null != user) {
             return user;

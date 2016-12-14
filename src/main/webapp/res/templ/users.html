@@ -1,0 +1,6 @@
+<table ng-if="(userList||null)!=null" class="table-bordered">
+    <tr ng-repeat="user in userList">
+        <tr><td class="col-md-6 text-right">Имя:</td><td class="col-md-6 text-xs-right">{{user.firstname}}</td></tr>
+        <tr><td class="col-md-6 text-right">Фамилия:</td><td class="col-md-6 text-xs-right">{{user.lastname}}</td></tr>
+    </tr>
+</table>

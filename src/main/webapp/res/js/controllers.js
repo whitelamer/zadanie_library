@@ -1,20 +1,20 @@
-gameApp.controller('MainCtrl', [ '$rootScope', '$scope', '$routeParams','$http', function( $rootScope, $scope,$routeParams,$http )
+libraryApp.controller('MainCtrl', [ '$rootScope', '$scope', '$routeParams','$http', function( $rootScope, $scope,$routeParams,$http )
 {
-    $scope.fetchSettleMap = function() {
-        $http.get('gameland').success(function(settleMap){
-            $scope.land = settleMap;
-            for(var i=0;i<$scope.land.land.length;i++){
-                for(var j=0;j<$scope.land.land[i].length;j++){
-                    if($scope.land.land[i][j].length==0)$scope.land.land[i][j]="empty";
-                }
-            }
+    $scope.userDetailsFn = function() {
+        $http.get('userDetails').success(function(userDetails){
+            $scope.userDetails = userDetails;
         });
     };
-    $scope.setAction = function(action){
-        console.log("setAction:"+action);
-        $http.get('gameplayer/'+action).success(function(){
-            $scope.fetchSettleMap();
+    $scope.userDetailsFn();
+}]);
+
+libraryApp.controller('UsersCtrl', [ '$rootScope', '$scope', '$routeParams','$http', function( $rootScope, $scope,$routeParams,$http )
+{
+    $scope.loadUserList = function() {
+        $http.get('userList').success(function(userDetails){
+            $scope.userList = userList;
+
         });
     };
-    $scope.fetchSettleMap();
+    $scope.loadUserList();
 }]);
