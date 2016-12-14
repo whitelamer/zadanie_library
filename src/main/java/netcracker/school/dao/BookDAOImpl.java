@@ -1,6 +1,6 @@
 package netcracker.school.dao;
 
-import netcracker.school.book.Book;
+import netcracker.school.models.Book;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

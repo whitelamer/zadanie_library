@@ -1,6 +1,6 @@
 package netcracker.school.dao;
 
-import netcracker.school.user.User;
+import netcracker.school.models.User;
 
 import java.util.List;
 
@@ -13,4 +13,6 @@ public interface UserDAO {
     public List<User> listUser();
 
     public void removeUser(Integer id);
+
+    public User getUserByEmail(String email);
 }

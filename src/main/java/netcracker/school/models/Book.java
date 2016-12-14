@@ -1,4 +1,4 @@
-package netcracker.school.book;
+package netcracker.school.models;
 
 
 import org.hibernate.annotations.GenericGenerator;

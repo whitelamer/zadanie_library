@@ -17,15 +17,18 @@
 
 	<!-- Менеджер транзакций -->
 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="messageSource"
-		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basename" value="classpath:messages" />
-		<property name="defaultEncoding" value="UTF-8" />
-	</bean>
+	<!--<bean id = "UserDAOImpl" class="netcracker.school.dao.UserDAOImpl">-->
+		<!--<property name="sessionFactory" ref="sessionFactory"/>-->
+	<!--</bean>-->
+	<!--<bean id="messageSource"-->
+		<!--class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+		<!--<property name="basename" value="classpath:messages" />-->
+		<!--<property name="defaultEncoding" value="UTF-8" />-->
+	<!--</bean>-->
 
 	<!-- Настройки бина dataSource будем хранить в отдельном файле -->
 	<bean id="propertyConfigurer"
@@ -35,24 +38,25 @@
 	<!-- Непосредственно бин dataSource -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		p:url="${spring.datasource.url}"
+		  p:driverClassName="${spring.datasource.driver-class-name}"
+		  p:url="${spring.datasource.url}"
 		p:username="${spring.datasource.username}"
 		p:password="${spring.datasource.password}" />
 
 	<!-- Настройки фабрики сессий Хибернейта -->
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation">
 			<value>classpath:hibernate.cfg.xml</value>
 		</property>
-		<property name="configurationClass">
-			<value>org.hibernate.cfg.AnnotationConfiguration</value>
-		</property>
+		<!--<property name="configurationClass">-->
+			<!--<value>org.hibernate.cfg.AnnotationConfiguration</value>-->
+		<!--</property>-->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</prop>
 				<prop key="hibernate.connection.charSet">UTF-8</prop>
 			</props>
 		</property>

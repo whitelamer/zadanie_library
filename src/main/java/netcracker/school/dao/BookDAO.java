@@ -1,6 +1,6 @@
 package netcracker.school.dao;
 
-import netcracker.school.book.Book;
+import netcracker.school.models.Book;
 
 import java.util.List;
 

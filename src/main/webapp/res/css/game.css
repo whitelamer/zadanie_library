@@ -62,7 +62,7 @@ body {
     -webkit-transform: rotateX(-90deg) rotateY(45deg) translate(1em,-2.9em);
     width: 103px;
     height: 125px;
-    background-image: url("/img/creature.png");
+    background-image: url("/res/img/creature.png");
     z-index: 2;
 }
 .NPC{
@@ -70,7 +70,7 @@ body {
     -webkit-transform: rotateX(-90deg) rotateY(45deg) translate(2em,-2.2em);
     width: 54px;
     height: 121px;
-    background-image: url("/img/npc.png");
+    background-image: url("/res/img/npc.png");
     z-index: 2;
 }
 .Player{
@@ -78,7 +78,7 @@ body {
     -webkit-transform: rotateX(-90deg) rotateY(45deg) translate(1.7em,-2.7em);
     width: 77px;
     height: 126px;
-    background-image: url("/img/player.svg");
+    background-image: url("/res/img/player.svg");
     z-index: 2;
 }
 /* Left
