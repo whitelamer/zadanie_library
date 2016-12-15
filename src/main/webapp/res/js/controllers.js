@@ -1,4 +1,4 @@
-libraryApp.controller('MainCtrl', [ '$rootScope', '$scope', '$routeParams','$http', function( $rootScope, $scope,$routeParams,$http )
+libraryApp.controller('MainCtrl', [ '$rootScope', '$scope','$route', '$routeParams','$http','$location', function( $rootScope, $scope,$route,$routeParams,$http ,$location)
 {
     $scope.userDetailsFn = function() {
         $http.get('userDetails').success(function(userDetails){
@@ -6,6 +6,9 @@ libraryApp.controller('MainCtrl', [ '$rootScope', '$scope', '$routeParams','$htt
         });
     };
     $scope.userDetailsFn();
+    $scope.$route = $route;
+    $scope.$location =$location;
+    $scope.$routeParams = $routeParams;
 }]);
 
 libraryApp.controller('UsersCtrl', [ '$rootScope', '$scope', '$routeParams','$http', function( $rootScope, $scope,$routeParams,$http )

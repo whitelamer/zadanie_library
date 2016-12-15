@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome To Library</title>
+    <base href="/index">
     <link href="<c:url value='/res/css/bootstrap.css' />"  rel="stylesheet"></link>
     <link href="<c:url value='/res/css/main.css' />" rel="stylesheet"></link>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
@@ -30,9 +31,13 @@
                 </td>
             </tr>
         </table>
-
+        <pre>$location = {{$location.absUrl();}}</pre>
+        <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+        <pre>$route.current.params = {{$route.current.params}}</pre>
+        <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+        <pre>$routeParams = {{$routeParams}}</pre>
         <div class="tools pull-left">
-            <a href="#!users" class="btn btn-success">Список читателей</a>
+            <a href="#/users/list" class="btn btn-success">Список читателей</a>
         </div>
 
         <div class="btn btn-default" ng-click="findBookList()">Поиск книги</div>
@@ -42,7 +47,7 @@
             <div class="btn btn-default" ng-click="showUserList()">Список читателей</div>
             <div class="btn btn-default" ng-click="findUser">Поиск читателя</div>
         </c:if>
-        <ng-view></ng-view>
+        <ng-view>123</ng-view>
         </body>
     </c:when>
     <c:otherwise>
