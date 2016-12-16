@@ -1,6 +1,5 @@
 package netcracker.school;
 
-import javax.xml.stream.XMLStreamException;
 import netcracker.school.whitelamer.logmanager.LogManager;
 import netcracker.school.whitelamer.logmanager.LogType;
 import netcracker.school.whitelamer.logmanager.exceptions.LoggerNotFoundException;

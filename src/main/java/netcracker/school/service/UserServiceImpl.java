@@ -1,7 +1,7 @@
 package netcracker.school.service;
 
-import netcracker.school.models.User;
 import netcracker.school.dao.UserDAO;
+import netcracker.school.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,6 +23,11 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void addUser(User user) {
         userDAO.addUser(user);
+    }
+
+    @Transactional
+    public void saveUser(User user) {
+        userDAO.saveUser(user);
     }
 
     @Transactional

@@ -4,15 +4,9 @@ import netcracker.school.models.User;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.List;
-
-/**
- * Created by user on 01.12.16.
- */
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -28,6 +22,10 @@ public class UserDAOImpl implements UserDAO {
 
     public void addUser(User user) {
         sessionFactory.getCurrentSession().save(user);
+    }
+
+    public void saveUser(User user) {
+        sessionFactory.getCurrentSession().update(user);
     }
 
     @SuppressWarnings("unchecked")
@@ -51,6 +49,8 @@ public class UserDAOImpl implements UserDAO {
         if(q.list().size()==0)return null;
         User user = (User) q.list().get(0);
         if (null != user) {
+            //System.out.println("RKFHESKJFHDSKJF:"+user.getUserPassports());
+            user.setUserPassports(user.getUserPassports());
             return user;
         }
         return null;

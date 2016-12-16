@@ -1,8 +1,9 @@
 package netcracker.school.configs;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import com.fasterxml.jackson.databind.Module;
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
+import org.springframework.context.annotation.*;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -12,7 +13,10 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
+@ImportResource({ "classpath:/WEB-INF/spring/security.xml","classpath:/WEB-INF/spring/data.xml" })
 @ComponentScan(basePackages = "netcracker.school")
+@EnableTransactionManagement
+@PropertySource(value = { "classpath:application.properties" })
 public class LibraryConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean(name="Library")
@@ -23,7 +27,10 @@ public class LibraryConfiguration extends WebMvcConfigurerAdapter {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
-
+    @Bean
+    public Module datatypeHibernateModule() {
+        return new Hibernate5Module();
+    }
     /*
      * Configure ResourceHandlers to serve static resources like CSS/ Javascript etc...
      *

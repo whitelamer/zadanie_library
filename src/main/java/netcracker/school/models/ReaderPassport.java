@@ -1,12 +1,9 @@
 package netcracker.school.models;
 
-import org.hibernate.annotations.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Parameter;
-import javax.persistence.Table;
 
 /**
  * Created by user on 09.12.16.
@@ -29,8 +26,21 @@ public class ReaderPassport{
     @Column(name = "ID", unique=true, nullable=false)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    @JsonIgnore
     private User user;
+
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+    //    @ManyToOne
+//    @JoinColumn(name = "USER_ID")
+
 
     @Column(name = "USER_ID", nullable=false, insertable = false, updatable = false)
     private Long user_id;

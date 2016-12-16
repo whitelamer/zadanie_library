@@ -31,21 +31,25 @@
                 </td>
             </tr>
         </table>
-        <pre>$location = {{$location.absUrl();}}</pre>
-        <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
-        <pre>$route.current.params = {{$route.current.params}}</pre>
-        <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
-        <pre>$routeParams = {{$routeParams}}</pre>
-        <div class="tools pull-left">
+        <div>
             <a href="#/users/list" class="btn btn-success">Список читателей</a>
-        </div>
-
-        <div class="btn btn-default" ng-click="findBookList()">Поиск книги</div>
-        <div class="btn btn-default" ng-click="showBookList()">Список книг</div>
+        </div><br>
+        <div>
+            <a href="#/book/find" class="btn btn-success">Поиск книги</a>
+        </div><br>
+        <div>
+            <a href="#/book/list" class="btn btn-success">Список книг</a>
+        </div><br>
         <c:if test="${pageContext.request.isUserInRole('ADMIN')}">
             <br>User ${user} in ADMIN Group<br>
-            <div class="btn btn-default" ng-click="showUserList()">Список читателей</div>
-            <div class="btn btn-default" ng-click="findUser">Поиск читателя</div>
+            </table>
+            <div>
+                <a href="#/users/list" class="btn btn-success">Список читателей</a>
+            </div>
+            </table>
+            <div>
+                <a href="#/users/find" class="btn btn-success">Поиск читателя</a>
+            </div>
         </c:if>
         <ng-view>123</ng-view>
         </body>

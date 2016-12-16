@@ -8,13 +8,16 @@ http://www.springframework.org/schema/security/spring-security-4.1.xsd">
 	<http>
 		<intercept-url pattern="/login*" access="isAnonymous()" />
 		<intercept-url pattern="/index*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
-		<intercept-url pattern="/user*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/userEdit" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/userDetails" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
+
 		<remember-me key="uniqueAndSecret" token-validity-seconds="86400" />
 
 		<form-login login-page="/login" default-target-url="/index"
 					authentication-failure-url="/login?error=true" />
 		<logout logout-url="/logout" logout-success-url="/index" />
 		<access-denied-handler error-page="/error403" />
+        <csrf disabled="true"/>
 	</http>
 
 	<authentication-manager>

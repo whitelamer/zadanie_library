@@ -25,6 +25,7 @@ public class LibraryUserDetailsService implements UserDetailsService{
             System.out.println("User not found");
             throw new UsernameNotFoundException("Username not found");
         }
+        System.out.println("loadUserByUsername:"+user);
         //user.getState().equals("Active")
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 true, true, true, true, getGrantedAuthorities(user));

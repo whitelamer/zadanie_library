@@ -13,6 +13,14 @@ libraryApp.config(['$routeProvider', function ($routeProvider) {
         templateUrl: '/res/templ/users.html',
         controller: 'UsersCtrl'
     }).
+    when('/users/add', {
+        templateUrl: '/res/templ/editUser.html',
+        controller: 'UsersAddCtrl'
+    }).
+    when('/users/edit/:userId', {
+        templateUrl: '/res/templ/editUser.html',
+        controller: 'UsersEditCtrl'
+    }).
     otherwise({templateUrl: '/res/templ/index.html',controller: 'MainCtrl'});
 
     // $httpProvider.defaults.useXDomain = true;

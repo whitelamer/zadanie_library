@@ -1,9 +1,8 @@
 package netcracker.school.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -23,7 +22,8 @@ import java.util.Set;
 @Table(name = "USERS")
 public class User {
 
-    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID", unique=true, nullable=false)
     private Integer id;
 
@@ -39,9 +39,10 @@ public class User {
     @Column(name = "PASSWORD", nullable=false)
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SELECT)
-    @MapKey(name = "user_id")
+    @JsonIgnore
+//    @MapKey(name = "user_id")
 //    @JoinTable(name = "READERPASSPORTS",
 //            joinColumns = { @JoinColumn(name = "ID") },
 //            inverseJoinColumns = { @JoinColumn(name = "user_id") })
