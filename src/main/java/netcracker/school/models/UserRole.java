@@ -40,8 +40,8 @@ public class UserRole {
     @Column(name = "USER_ID", nullable=false, insertable = false, updatable = false)
     private Long user_id;
 
-    @Column(name = "ROLE")
-    private String role;
+    @Column(name = "ROLE", length=30, unique=true, nullable=false)
+    private String role = UserReaderPassportType.USER.getUserReaderPassportType();
 
     public Long getId() {
         return id;

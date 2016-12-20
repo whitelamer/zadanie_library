@@ -45,19 +45,9 @@ public class ReaderPassport{
     @Column(name = "USER_ID", nullable=false, insertable = false, updatable = false)
     private Long user_id;
 
-    @Column(name="ROLE", length=30, unique=true, nullable=false)
-    private String role = UserReaderPassportType.USER.getUserReaderPassportType();
 
     @Column(name = "STATE", nullable=false)
     private Long state;
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 
     public Long getId() {
         return id;
@@ -89,7 +79,6 @@ public class ReaderPassport{
                 "id=" + id +
                 ", user=" + user_p_id +
                 ", user_id=" + user_id +
-                ", role='" + role + '\'' +
                 ", state=" + state +
                 ']';
     }
