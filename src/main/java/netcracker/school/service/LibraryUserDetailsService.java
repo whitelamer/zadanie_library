@@ -2,6 +2,7 @@ package netcracker.school.service;
 
 import netcracker.school.models.ReaderPassport;
 import netcracker.school.models.User;
+import netcracker.school.models.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,9 +36,9 @@ public class LibraryUserDetailsService implements UserDetailsService{
     private List<GrantedAuthority> getGrantedAuthorities(User user){
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-        for(ReaderPassport readerPassport : user.getUserPassports()){
-            System.out.println("UserProfile : "+readerPassport);
-            authorities.add(new SimpleGrantedAuthority("ROLE_"+readerPassport.getRole()));
+        for(UserRole userRole : user.getUserRoles()){
+            System.out.println("UserProfile : "+userRole);
+            authorities.add(new SimpleGrantedAuthority("ROLE_"+userRole.getRole()));
         }
         System.out.print("authorities :"+authorities);
         return authorities;

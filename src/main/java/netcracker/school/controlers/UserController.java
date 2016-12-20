@@ -20,7 +20,6 @@ public class UserController {
     @RequestMapping(value = "userDetails", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
     public netcracker.school.models.User userDetails() {
         netcracker.school.models.User user=userService.getUserByEmail(userService.getCurrentUserName());
-        System.out.println("userDetails:"+user);
         return user;
     }
 

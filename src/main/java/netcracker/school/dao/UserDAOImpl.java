@@ -50,7 +50,7 @@ public class UserDAOImpl implements UserDAO {
         User user = (User) q.list().get(0);
         if (null != user) {
             //System.out.println("RKFHESKJFHDSKJF:"+user.getUserPassports());
-            user.setUserPassports(user.getUserPassports());
+            //user.setUserPassports(user.getReaderPassports());
             return user;
         }
         return null;

@@ -32,26 +32,27 @@
             </tr>
         </table>
         <div>
-            <a href="#/users/list" class="btn btn-success">Список читателей</a>
+            <a href="#/books/find" class="btn btn-success">Поиск книги</a>
         </div><br>
         <div>
-            <a href="#/book/find" class="btn btn-success">Поиск книги</a>
-        </div><br>
+            <a href="#/books/list" class="btn btn-success">Список книг</a>
+        </div>
         <div>
-            <a href="#/book/list" class="btn btn-success">Список книг</a>
+            <a href="#/books/mylist" class="btn btn-success">Список моих книг</a>
         </div><br>
         <c:if test="${pageContext.request.isUserInRole('ADMIN')}">
             <br>User ${user} in ADMIN Group<br>
-            </table>
+            <div>
+                <a href="#/users/add" class="btn btn-success">Добавить читателя</a>
+            </div>
             <div>
                 <a href="#/users/list" class="btn btn-success">Список читателей</a>
             </div>
-            </table>
             <div>
                 <a href="#/users/find" class="btn btn-success">Поиск читателя</a>
             </div>
         </c:if>
-        <ng-view>123</ng-view>
+        <ng-view></ng-view>
         </body>
     </c:when>
     <c:otherwise>

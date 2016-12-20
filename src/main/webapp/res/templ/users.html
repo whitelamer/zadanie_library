@@ -2,7 +2,7 @@
     <tr class="text-center"><td>Id:</td><td>Имя:</td><td>Фамилия:</td><td>email</td>
         <td>
             <div class="btn btn-default">
-                <a href="#/users/add" class="fa fa-plus"></a>
+                <a href="#/users/add" class="btn btn-success"></a>
             </div>
         </td></tr>
     <tr ng-repeat="user in userList track by $index" class="text-center">
@@ -12,7 +12,7 @@
         <td>{{user.email}}</td>
         <td>
             <div class="btn btn-default">
-                <a href="#/users/edit/{{user.id}}" class="fa fa-edit"></a>
+                <a href="#/users/edit/{{user.id}}" class="btn btn-success"></a>
             </div>
         </td>
     </tr>

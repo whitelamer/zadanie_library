@@ -1,30 +1,37 @@
 package netcracker.school.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by user on 01.12.16.
- * @Table(name = "USERS")
- */
-//@NamedQueries({
-//        @NamedQuery(name = User.NamedQuery.USER_FIND_ALL, query = "from User"),
-//        @NamedQuery(name = User.NamedQuery.USER_FIND_BY_ID, query = "from User where id = :id") })
-@NamedNativeQueries({
-        @NamedNativeQuery(name = User.NamedQuery.USER_FIND_BY_EMAIL, query = "select * from users where EMAIL =:email", resultClass = User.class) })
 
 @Entity
 @Table(name = "USERS")
+@NamedQueries({
+        @NamedQuery(name = User.NamedQuery.USER_FIND_BY_EMAIL, query = "from User where email = :email")
+})
 public class User {
 
+    @GenericGenerator(
+            name = "userSequenceGenerator",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "users_user_id_seq"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "1"),
+                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+            }
+    )
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "ID", unique=true, nullable=false)
+    @GeneratedValue(generator = "userSequenceGenerator")
+    @Column(name = "USER_ID", unique=true, nullable=false)
     private Integer id;
 
     @Column(name = "FIRSTNAME", nullable=false)
@@ -36,19 +43,20 @@ public class User {
     @Column(name = "EMAIL", unique=true, nullable=false)
     private String email;
 
+
     @Column(name = "PASSWORD", nullable=false)
+    @JsonIgnore
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user_role_id", cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SELECT)
     @JsonIgnore
-//    @MapKey(name = "user_id")
-//    @JoinTable(name = "READERPASSPORTS",
-//            joinColumns = { @JoinColumn(name = "ID") },
-//            inverseJoinColumns = { @JoinColumn(name = "user_id") })
-    private Set<ReaderPassport> userPassports = new HashSet<ReaderPassport>();
+    private Set<UserRole> userRoles = new HashSet<UserRole>();
 
-
+    @OneToMany(mappedBy = "user_p_id", cascade = CascadeType.ALL)
+    @Fetch(value = FetchMode.SELECT)
+    @JsonIgnore
+    private Set<ReaderPassport> readerPassports = new HashSet<ReaderPassport>();
 
     public Integer getId() {
         return id;
@@ -90,12 +98,20 @@ public class User {
         this.password = password;
     }
 
-    public Set<ReaderPassport> getUserPassports() {
-        return userPassports;
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
     }
 
-    public void setUserPassports(Set<ReaderPassport> userPassports) {
-        this.userPassports = userPassports;
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+    public Set<ReaderPassport> getReaderPassports() {
+        return readerPassports;
+    }
+
+    public void setReaderPassports(Set<ReaderPassport> readerPassports) {
+        this.readerPassports = readerPassports;
     }
 
     public static class NamedQuery {

@@ -8,8 +8,11 @@ http://www.springframework.org/schema/security/spring-security-4.1.xsd">
 	<http>
 		<intercept-url pattern="/login*" access="isAnonymous()" />
 		<intercept-url pattern="/index*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
-		<intercept-url pattern="/userEdit" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
-		<intercept-url pattern="/userDetails" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/*Add" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/*Edit" access="hasRole('ROLE_ADMIN')"/>
+		<!--<intercept-url pattern="/userDetails" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>-->
+		<!--<intercept-url pattern="/categoryList" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>-->
+		<intercept-url pattern="/*List" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')"/>
 
 		<remember-me key="uniqueAndSecret" token-validity-seconds="86400" />
 

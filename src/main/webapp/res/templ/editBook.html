@@ -1,0 +1,23 @@
+    <table>
+        <tr>
+            <td align="right">title</td>
+            <td><input type="text" name="title" ng-model="editBook.title"/></td>
+        </tr>
+        <tr>
+            <td align="right">author</td>
+            <td><input type="text" name="author" ng-model="editBook.author"/></td>
+        </tr>
+        <tr>
+            <td align="right">category</td>
+
+            <td><select name="category" ng-model="editBook.category">
+                    <option ng-repeat="category in categoryList" value="{{category.id}}">{{category.name}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <div class="btn btn-success" ng-click="saveBook()">Подтвердить</div>
+            </td>
+        </tr>
+    </table>

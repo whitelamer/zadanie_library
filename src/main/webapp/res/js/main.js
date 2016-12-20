@@ -21,6 +21,22 @@ libraryApp.config(['$routeProvider', function ($routeProvider) {
         templateUrl: '/res/templ/editUser.html',
         controller: 'UsersEditCtrl'
     }).
+    when('/books/list', {
+        templateUrl: '/res/templ/books.html',
+        controller: 'BooksCtrl'
+    }).
+    when('/books/add', {
+        templateUrl: '/res/templ/editBook.html',
+        controller: 'BooksAddCtrl'
+    }).
+    when('/books/edit/:bookId', {
+        templateUrl: '/res/templ/editBook.html',
+        controller: 'BooksEditCtrl'
+    }).
+    when('/books/take/:bookId', {
+        templateUrl: '/res/templ/books.html',
+        controller: 'BooksTakeCtrl'
+    }).
     otherwise({templateUrl: '/res/templ/index.html',controller: 'MainCtrl'});
 
     // $httpProvider.defaults.useXDomain = true;

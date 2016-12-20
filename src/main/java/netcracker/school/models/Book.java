@@ -6,27 +6,22 @@ import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 
-/**
- * Created by user on 01.12.16.
- * @Table(name = "USERS")
- */
-
 @Entity
-@Table(name = "BOOKS")
+@Table(name = "BOOK")
 public class Book {
 
     @GenericGenerator(
             name = "bookSequenceGenerator",
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
-                    @Parameter(name = "sequence_name", value = "books_id_seq"),
+                    @Parameter(name = "sequence_name", value = "book_book_id_seq"),
                     @Parameter(name = "initial_value", value = "1"),
                     @Parameter(name = "increment_size", value = "1")
             }
     )
     @Id
     @GeneratedValue(generator = "bookSequenceGenerator")
-    @Column(name = "ID")
+    @Column(name = "book_id")
     private Long id;
 
     @Column(name = "TITLE")
@@ -35,8 +30,13 @@ public class Book {
     @Column(name = "AUTHOR")
     private String author;
 
-    @Column(name = "BOOKTEXT")
-    private String text;
+    @Column(name = "category")
+    private Integer category_id;
+
+    @ManyToOne
+    @JoinColumn(name = "category", insertable = false, updatable = false)
+    private Category category;
+
 
     public String getTitle() {
         return title;
@@ -54,19 +54,19 @@ public class Book {
         this.author = author;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getCategory() {
+        return category_id;
+    }
+
+    public void setCategory(Integer category) {
+        this.category_id = category;
     }
 }

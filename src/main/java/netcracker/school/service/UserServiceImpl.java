@@ -51,7 +51,6 @@ public class UserServiceImpl implements UserService {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if(auth instanceof AnonymousAuthenticationToken){
-
             System.out.println("auth == Anonymous :"+auth);
             return null;
         }

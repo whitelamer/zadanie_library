@@ -9,34 +9,34 @@ import javax.persistence.*;
  * Created by user on 09.12.16.
  */
 @Entity
-@Table(name = "READERPASSPORTS")
+@Table(name = "READERPASSPORT")
 public class ReaderPassport{
 
     @GenericGenerator(
             name = "passportSequenceGenerator",
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
-                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "passport_id_seq"),
+                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "readerpassport_passport_id_seq"),
                     @org.hibernate.annotations.Parameter(name = "initial_value", value = "1"),
                     @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
             }
     )
     @Id
     @GeneratedValue(generator = "passportSequenceGenerator")
-    @Column(name = "ID", unique=true, nullable=false)
+    @Column(name = "passport_id", unique=true, nullable=false)
     private Long id;
 
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     @JsonIgnore
-    private User user;
+    private User user_p_id;
 
     public User getUser() {
-        return user;
+        return user_p_id;
     }
     public void setUser(User user) {
-        this.user = user;
+        this.user_p_id = user;
     }
     //    @ManyToOne
 //    @JoinColumn(name = "USER_ID")
@@ -87,7 +87,7 @@ public class ReaderPassport{
     public String toString() {
         return "ReaderPassport [" +
                 "id=" + id +
-                ", user=" + user +
+                ", user=" + user_p_id +
                 ", user_id=" + user_id +
                 ", role='" + role + '\'' +
                 ", state=" + state +

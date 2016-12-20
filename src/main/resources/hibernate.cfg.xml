@@ -5,8 +5,11 @@
 
 <hibernate-configuration>
 	<session-factory>
+		<mapping package="netcracker.school.models"/>
 		<mapping class="netcracker.school.models.User" />
+		<mapping class="netcracker.school.models.UserRole" />
 		<mapping class="netcracker.school.models.Book" />
+		<mapping class="netcracker.school.models.Category" />
 		<mapping class="netcracker.school.models.ReaderPassport" />
 	</session-factory>
 </hibernate-configuration>
