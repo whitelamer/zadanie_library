@@ -46,6 +46,9 @@
                 <a href="#/users/add" class="btn btn-success">Добавить читателя</a>
             </div>
             <div>
+                <a href="#/book/add" class="btn btn-success">Добавить книгу</a>
+            </div>
+            <div>
                 <a href="#/users/list" class="btn btn-success">Список читателей</a>
             </div>
             <div>

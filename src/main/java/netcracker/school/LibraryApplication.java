@@ -27,12 +27,12 @@ public class LibraryApplication extends SpringBootServletInitializer {
 
 		ConfigurableApplicationContext appContext = SpringApplication.run(LibraryApplication.class, args);
 
-		Resource resource = appContext.getResource("classpath:LogManager.xml");
-		logger.loadFromFile(resource.getURI().toString());//настраиваем менеджер
-		try {
-			logger.writeLog(LogType.WARN, "serverlogger", "Start write to file");//пишем сообщение в логера с именем filelogger
-		}catch (LoggerNotFoundException e){
-			e.printStackTrace();
-		}
+//		Resource resource = appContext.getResource("classpath:LogManager.xml");
+//		logger.loadFromFile(resource.getURI().toString());//настраиваем менеджер
+//		try {
+//			logger.writeLog(LogType.WARN, "serverlogger", "Start write to file");//пишем сообщение в логера с именем filelogger
+//		}catch (LoggerNotFoundException e){
+//			e.printStackTrace();
+//		}
 	}
 }

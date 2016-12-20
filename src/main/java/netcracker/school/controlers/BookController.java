@@ -22,35 +22,35 @@ public class BookController {
 
     @RequestMapping(value = "bookList", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
     public List<Book> bookList() {
-        return bookService.listBook();
+        return bookService.getAll();
     }
 
     @RequestMapping(value = "bookAdd", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.POST)
     public Book bookAdd(@RequestBody Book book) {
-        bookService.addBook(book);
+        bookService.create(book);
         return book;
     }
 
     @RequestMapping(value = "bookEdit", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public Book bookEdit(@RequestBody Book book) {
-        bookService.saveBook(book);
+        bookService.update(book);
         return book;
     }
 
-    @RequestMapping(value = "categoryList", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
-    public List<Category> categoryList() {
-        return bookService.listCategory();
-    }
-
-    @RequestMapping(value = "categoryAdd", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.POST)
-    public Category categoryAdd(@RequestBody Category category) {
-        bookService.addCategory(category);
-        return category;
-    }
-
-    @RequestMapping(value = "categoryEdit", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public Category categoryEdit(@RequestBody Category category) {
-        bookService.saveCategory(category);
-        return category;
-    }
+//    @RequestMapping(value = "categoryList", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
+//    public List<Category> categoryList() {
+//        return bookService.listCategory();
+//    }
+//
+//    @RequestMapping(value = "categoryAdd", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.POST)
+//    public Category categoryAdd(@RequestBody Category category) {
+//        bookService.addCategory(category);
+//        return category;
+//    }
+//
+//    @RequestMapping(value = "categoryEdit", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+//    public Category categoryEdit(@RequestBody Category category) {
+//        bookService.saveCategory(category);
+//        return category;
+//    }
 }

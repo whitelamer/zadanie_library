@@ -75,7 +75,7 @@ libraryApp.controller('BooksTakeCtrl', [ '$rootScope', '$scope', '$routeParams',
     $scope.loadBookList = function() {
         for(var i=0;i<$rootScope.bookList.length;i++)
             if($routeParams.bookId==$rootScope.bookList[i].id)$scope.takeBook=$rootScope.bookList[i];
-        $http.post('bookEdit',
+        $http.post('takeBook',
             $scope.takeBook
         ).
         success(function(data, status, headers) {

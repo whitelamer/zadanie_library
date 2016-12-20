@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "READERPASSPORT")
-public class ReaderPassport{
+public class ReaderPassport implements ModelsForDAO{
 
     @GenericGenerator(
             name = "passportSequenceGenerator",

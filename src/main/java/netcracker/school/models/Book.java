@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "BOOK")
-public class Book {
+public class Book implements ModelsForDAO {
 
     @GenericGenerator(
             name = "bookSequenceGenerator",
