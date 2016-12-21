@@ -19,13 +19,13 @@
         Приветствую вас <strong>${user}</strong> в нашей библиотеке
         <a href="/logout" >Logout</a>
         <table ng-if="(userDetails||null)!=null" class="table-bordered">
-            <tr><td class="col-md-6 text-right">Имя:</td><td class="col-md-6 text-xs-right">{{userDetails.firstname}}</td></tr>
-            <tr><td class="col-md-6 text-right">Фамилия:</td><td class="col-md-6 text-xs-right">{{userDetails.lastname}}</td></tr>
-            <tr ng-repeat="userPassport in userDetails.userPassports">
+            <tr><td class="col-md-6 text-right">Имя:</td><td class="col-md-6 text-xs-right">{{userDetails.user.firstname}}</td></tr>
+            <tr><td class="col-md-6 text-right">Фамилия:</td><td class="col-md-6 text-xs-right">{{userDetails.user.lastname}}</td></tr>
+            <tr ng-repeat="userPassport in userDetails.activePreaderPassports">
                 <td colspan="2"><table>
                     <tr><td>Читательский Билет номер:</td><td>{{userPassport.id}}</td></tr>
                     <tr><td>Статус:</td><td>{{userPassport.state}}</td></tr>
-                    <tr><td>Книг взято:</td><td>0</td></tr>
+                    <tr><td>Книг взято:</td><td>{{userPassport.getedBooks.length}}</td></tr>
                     <tr><td>Книг просроченно:</td><td>0</td></tr>
                 </table>
                 </td>

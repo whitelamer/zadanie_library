@@ -1,6 +1,6 @@
 package netcracker.school.dao;
 
-import netcracker.school.models.ModelsForDAO;
+import netcracker.school.models.LibraryEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,13 +8,13 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-public abstract class GenericDaoImpl<T extends ModelsForDAO> implements GenericDao<T> {
+public abstract class AbstractDaoImpl<T extends LibraryEntity> implements AbstractDao<T> {
     @PersistenceContext
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     private Class<T> type;
 
-    public GenericDaoImpl() {
+    public AbstractDaoImpl() {
         Type t = getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;
         type = (Class) pt.getActualTypeArguments()[0];

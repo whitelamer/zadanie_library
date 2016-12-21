@@ -1,0 +1,22 @@
+<table ng-if="(bookList||null)!=null" class="table-bordered" ng-repeat="userPassport in userDetails.activePreaderPassports">
+    <tr class="text-center"><td>Book Id:</td><td>title:</td><td>author:</td><td>Passport №</td><td></td></tr>
+    <tr ng-repeat="getedbook in userPassport.getedBooks track by $index" class="text-center">
+        <td>{{getedbook.book_id}}</td>
+        <td>
+            <div ng-repeat="book in bookList" ng-if="getedbook.book_id == book.id">
+                {{book.title}}
+            </div>
+        </td>
+        <td>
+            <div ng-repeat="book in bookList" ng-if="getedbook.book_id == book.id">
+                {{book.author}}
+            </div>
+        </td>
+        <td>
+            {{getedbook.passport_id}}
+        </td>
+        <td>
+            <div class="btn btn-success" ng-click="returnBook(getedbook)">return</div>
+        </td>
+    </tr>
+</table>

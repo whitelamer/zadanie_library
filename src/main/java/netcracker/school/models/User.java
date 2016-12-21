@@ -32,7 +32,7 @@ public class User {
     @Id
     @GeneratedValue(generator = "userSequenceGenerator")
     @Column(name = "USER_ID", unique=true, nullable=false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "FIRSTNAME", nullable=false)
     private String firstname;
@@ -58,11 +58,11 @@ public class User {
     @JsonIgnore
     private Set<ReaderPassport> readerPassports = new HashSet<ReaderPassport>();
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

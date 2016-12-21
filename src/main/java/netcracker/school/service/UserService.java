@@ -18,3 +18,4 @@ public interface UserService {
 
 	public String getCurrentUserName();
 }
+

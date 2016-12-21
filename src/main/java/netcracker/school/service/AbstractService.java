@@ -1,11 +1,11 @@
 package netcracker.school.service;
 
 
-import netcracker.school.models.ModelsForDAO;
+import netcracker.school.models.LibraryEntity;
 
 import java.util.List;
 
-public interface GenericService<T extends ModelsForDAO> {
+public interface AbstractService<T extends LibraryEntity> {
     public T create(T object);
 
     public void update(T object);

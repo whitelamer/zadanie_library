@@ -9,7 +9,10 @@
         <td>{{book.id}}</td>
         <td>{{book.title}}</td>
         <td>{{book.author}}</td>
-        <td>{{book.category}}</td>
+        <td><div ng-repeat="category in categoryList" ng-if="category.id == book.category">
+            {{category.name}}
+            </div>
+        </td>
         <td>
             <div class="btn btn-default">
                 <a href="#/books/edit/{{book.id}}" class="btn btn-success">edit</a>

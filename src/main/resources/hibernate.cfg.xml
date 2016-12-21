@@ -11,5 +11,7 @@
 		<mapping class="netcracker.school.models.Book" />
 		<mapping class="netcracker.school.models.Category" />
 		<mapping class="netcracker.school.models.ReaderPassport" />
+		<mapping class="netcracker.school.models.Library" />
+		<mapping class="netcracker.school.models.State" />
 	</session-factory>
 </hibernate-configuration>

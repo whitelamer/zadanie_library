@@ -1,10 +1,10 @@
 package netcracker.school.dao;
 
-import netcracker.school.models.ModelsForDAO;
+import netcracker.school.models.LibraryEntity;
 
 import java.util.List;
 
-public interface GenericDao<T extends ModelsForDAO> {
+public interface AbstractDao<T extends LibraryEntity> {
 
     public T create(T object);
 

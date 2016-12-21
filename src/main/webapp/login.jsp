@@ -7,6 +7,8 @@
     <link href="<c:url value='/res/css/bootstrap.css' />"  rel="stylesheet"></link>
     <link href="<c:url value='/res/css/main.css' />" rel="stylesheet"></link>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
+    <script src="res/lib/angular.min.js"></script>
+    <script src="res/lib/angular-route.min.js"></script>
 </head>
 <body>
 Приветствую вас в нашей библиотеке
@@ -26,11 +28,11 @@
     <table>
         <tr>
             <td align="right">Логин</td>
-            <td><input type="text" name="username" /></td>
+            <td><input type="text" name="username" required/></td>
         </tr>
         <tr>
             <td align="right">Пароль</td>
-            <td><input type="password" name="password" /></td>
+            <td><input type="password" name="password" required/></td>
         </tr>
         <tr>
             <td align="right">Запомнить</td>

@@ -6,9 +6,9 @@ import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 
-@Entity
+@javax.persistence.Entity
 @Table(name = "BOOK")
-public class Book implements ModelsForDAO {
+public class Book implements LibraryEntity {
 
     @GenericGenerator(
             name = "bookSequenceGenerator",

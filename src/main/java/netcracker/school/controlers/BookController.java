@@ -4,7 +4,9 @@ import netcracker.school.models.Book;
 import netcracker.school.models.Category;
 import netcracker.school.models.User;
 import netcracker.school.service.BookService;
+import netcracker.school.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import java.util.List;
 public class BookController {
 
     @Autowired
+    @Qualifier("BookService")
     private BookService bookService;
 
     @RequestMapping(value = "bookList", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
@@ -36,21 +39,4 @@ public class BookController {
         bookService.update(book);
         return book;
     }
-
-//    @RequestMapping(value = "categoryList", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.GET)
-//    public List<Category> categoryList() {
-//        return bookService.listCategory();
-//    }
-//
-//    @RequestMapping(value = "categoryAdd", produces = MediaType.APPLICATION_JSON_VALUE,  method = RequestMethod.POST)
-//    public Category categoryAdd(@RequestBody Category category) {
-//        bookService.addCategory(category);
-//        return category;
-//    }
-//
-//    @RequestMapping(value = "categoryEdit", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-//    public Category categoryEdit(@RequestBody Category category) {
-//        bookService.saveCategory(category);
-//        return category;
-//    }
 }

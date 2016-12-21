@@ -1,11 +1,20 @@
 libraryApp.controller('MainCtrl', [ '$rootScope', '$scope','$route', '$routeParams','$http','$location', function( $rootScope, $scope,$route,$routeParams,$http ,$location)
 {
-    $scope.userDetailsFn = function() {
+    $rootScope.userDetailsFn = function() {
         $http.get('userDetails').success(function(userDetails){
             $scope.userDetails = userDetails;
         });
+        $http.get('bookList').success(function(data){
+            $rootScope.bookList = data;
+        });
+        $http.get('categoryList').success(function(data){
+            $rootScope.categoryList = data;
+        });
+        $http.get('stateList').success(function(data){
+            $rootScope.stateList = data;
+        });
     };
-    $scope.userDetailsFn();
+    $rootScope.userDetailsFn();
     $scope.$route = $route;
     $scope.$location =$location;
     $scope.$routeParams = $routeParams;
@@ -85,6 +94,7 @@ libraryApp.controller('BooksTakeCtrl', [ '$rootScope', '$scope', '$routeParams',
             $http.get('categoryList').success(function (data) {
                 $rootScope.categoryList = data;
             });
+            alert(data.mess);
         });
     };
     $scope.loadBookList();
@@ -123,4 +133,19 @@ libraryApp.controller('BooksAddCtrl', [ '$rootScope', '$scope','$http', function
             console.log("Might be good to GET " + newTaskUri + " and append the task.");
         });
     }
+}]);
+libraryApp.controller('MyBooksCtrl', [ '$rootScope', '$scope', '$routeParams','$http', function( $rootScope, $scope,$routeParams,$http )
+{
+    $scope.returnBook = function(record) {
+        $http.post('returnBook',
+            record
+        ).success(function (data, status, headers) {
+            $rootScope.userDetailsFn();
+            alert(data);
+        });
+    }
+}]);
+libraryApp.controller('BooksReturnCtrl', [ '$rootScope', '$scope', '$routeParams','$http', function( $rootScope, $scope,$routeParams,$http )
+{
+
 }]);

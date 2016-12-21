@@ -37,6 +37,14 @@ libraryApp.config(['$routeProvider', function ($routeProvider) {
         templateUrl: '/res/templ/books.html',
         controller: 'BooksTakeCtrl'
     }).
+    when('/books/mylist', {
+        templateUrl: '/res/templ/mybooks.html',
+        controller: 'MyBooksCtrl'
+    }).
+    when('/books/return/:bookId', {
+        templateUrl: '/res/templ/mybooks.html',
+        controller: 'BooksReturnCtrl'
+    }).
     otherwise({templateUrl: '/res/templ/index.html',controller: 'MainCtrl'});
 
     // $httpProvider.defaults.useXDomain = true;

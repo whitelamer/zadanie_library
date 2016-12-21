@@ -6,23 +6,23 @@ import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 
-@javax.persistence.Entity
-@Table(name = "bookcategory")
-public class Category implements LibraryEntity {
+@Entity
+@Table(name = "readerpassportsstate")
+public class State implements LibraryEntity {
 
     @GenericGenerator(
-            name = "categorySequenceGenerator",
+            name = "stateSequenceGenerator",
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
-                    @Parameter(name = "sequence_name", value = "bookcategory_category_id_seq"),
+                    @Parameter(name = "sequence_name", value = "readerpassportsstate_state_id_seq"),
                     @Parameter(name = "initial_value", value = "1"),
                     @Parameter(name = "increment_size", value = "1")
             }
     )
     @Id
-    @GeneratedValue(generator = "categorySequenceGenerator")
-    @Column(name = "category_id")
-    private Long id;
+    @GeneratedValue(generator = "stateSequenceGenerator")
+    @Column(name = "state_id")
+    private Long state_id;
 
     @Column(name = "name")
     private String name;
@@ -31,11 +31,11 @@ public class Category implements LibraryEntity {
     private String description;
 
     public Long getId() {
-        return id;
+        return state_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.state_id = id;
     }
 
 
